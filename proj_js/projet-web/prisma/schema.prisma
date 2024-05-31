@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prismaClient.js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  role      Role
+  articles  Article[]
+}
+
+enum Role {
+  ADMIN
+  AUTHOR
+}
+  
+model Article {
+  id         Int         @id @default(autoincrement())
+  title      String
+  content    String      @db.VarChar(2000)  // Augmenter la longueur maximale selon vos besoins
+  image      String?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  published  Boolean
+  author     User        @relation(fields: [userId], references: [id])
+  userId     Int
+  categories Category[] 
+  comments   Comment[]
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  articles Article[] 
+
+}
+
+
+
+model Comment {
+
+  id        Int      @id @default(autoincrement())
+  email     String
+  content   String
+  article   Article  @relation(fields: [articleId], references: [id])
+  articleId Int
+}

@@ -1,0 +1,38 @@
+//GET http://localhost:3000/articles
+
+//GET http://localhost:3000/articles/1
+
+
+
+
+POST http://localhost:3000/articles
+
+Content-Type: application/json
+
+{
+    "title": "article1",
+    "content": "football",
+    "image": "img",
+    "updatedAt": "2024-05-02T13:00:00Z",
+    "published": false
+}
+
+
+
+  
+
+
+
+PATCH http://localhost:3000/articles/1
+
+Content-Type: application/json
+
+{
+    "title": "Nouveau",
+    "content": "Nouveau ",
+    "image": "image",
+    "updatedAt": "2024-05-02T13:00:00Z",
+    "published": false
+}
+
+DELETE http://localhost:3000/articles/1

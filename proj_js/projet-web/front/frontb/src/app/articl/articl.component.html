@@ -1,0 +1,23 @@
+<div class="container">
+  <!-- Liste des catégories avec un nombre d'articles -->
+  <div *ngFor="let category of categories" class="category">
+    <button (click)="onSelectCategory(category.id)">{{ category.name }} ({{ category.articlesCount }})</button>
+  </div>
+
+  <!-- Liste des articles disponibles pour la catégorie sélectionnée -->
+  <div *ngIf="selectedArticles.length > 0">
+    <h2>Articles Available</h2>
+    <ul>
+      <li *ngFor="let article of selectedArticles">
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.content }}</p>
+        <p>Published: {{ article.published ? 'Yes' : 'No' }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Message si aucun article n'est disponible -->
+  <div *ngIf="selectedArticles.length === 0">
+    <p>No articles available.</p>
+  </div>
+</div>

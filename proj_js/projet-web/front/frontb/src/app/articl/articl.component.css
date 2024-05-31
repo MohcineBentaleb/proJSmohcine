@@ -1,0 +1,28 @@
+/* Style pour le conteneur */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: auto; /* Permet le défilement horizontal si nécessaire */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+  }
+  
+  /* Style pour les catégories */
+  .category {
+    display: inline-block; /* Affichage en ligne pour les catégories */
+    margin-right: 10px; /* Marge à droite entre les catégories */
+  }
+  
+  .category button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .category button:hover {
+    background-color: #0056b3;
+  }
+  
